@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import {Link} from 'expo-router';
-import { styled } from 'nativewind';
 
 export default function App() {
   return (
