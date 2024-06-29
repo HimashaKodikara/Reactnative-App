@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Aur hhhhhhhhh!</Text>
+      <Text style={styles.title} >Aura !</Text>
       <StatusBar style="auto" />
       <Link href="/Profile" style={{color:'blue'}}>Go to Profile</Link>
     </View>
@@ -22,5 +22,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginTop: 50,
+    fontFamily: 'Poppins_900Black',
+    fontWeight: 'bold',
   },
 });
