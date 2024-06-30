@@ -7,7 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title} >Aura !</Text>
       <StatusBar style="auto" />
-      <Link href="/Profile" style={{color:'blue'}}>Go to Profile</Link>
+      <Link href="/home" style={{color:'blue'}}>Home</Link>
     </View>
   );
 }
