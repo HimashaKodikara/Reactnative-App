@@ -31,7 +31,11 @@ export default function App() {
      
       </View>
       <Text style={{fontSize:15, fontFamily:'Poppins-Regular',color:"gray", marginTop:50 , textAlign:'center'}}>Where creativity meets innovations:embark on a journey of limitless exporation with Aora</Text>
-     <CustomButton/>
+     <CustomButton
+     title="Continue with Email"
+     handlePress={()=>{}}
+     containerStyles="w-full mt-7"
+     />
      </View>
   </ScrollView>
    </SafeAreaView>
