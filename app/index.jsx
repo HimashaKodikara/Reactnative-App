@@ -3,7 +3,7 @@ import { StatusBar, Text,Image, View, StyleSheet,ScrollView } from 'react-native
 import { Link } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {images} from '../constants';
-import {CustomButton} from '../components';
+import CustomButton from './CustomButton';
 
 export default function App() {
   return (
@@ -28,10 +28,10 @@ export default function App() {
         source={images.path}
         style={{width:90,height:15, position:'absolute', bottom:-10,right:-8}}
        />
-    
+     
       </View>
       <Text style={{fontSize:15, fontFamily:'Poppins-Regular',color:"gray", marginTop:50 , textAlign:'center'}}>Where creativity meets innovations:embark on a journey of limitless exporation with Aora</Text>
-      <CustomButton />
+     <CustomButton/>
      </View>
   </ScrollView>
    </SafeAreaView>
