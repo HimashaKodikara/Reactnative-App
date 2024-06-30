@@ -1,28 +1,53 @@
 import React from 'react';
-import { StatusBar, Text, View, StyleSheet } from 'react-native';
+import { StatusBar, Text,Image, View, StyleSheet,ScrollView } from 'react-native';
 import { Link } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {images} from '../constants';
+import {CustomButton} from '../components';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title} >Aura !</Text>
-      <StatusBar style="auto" />
-      <Link href="/home" style={{color:'blue'}}>Home</Link>
-    </View>
+   <SafeAreaView style={styles.safearea}>
+  <ScrollView contentContainerStyle={{height:'100%'}}>
+     <View style={styles.view}>
+      <Image
+         source={images.logo}
+         style={{width:130,height:84}}
+         resizeMode='contain'
+      />
+      <Image
+        source={images.cards}
+        style={{width:380,height:300}}
+        resizeMode='contain'
+      />
+      <View style={{marginTop:5 , position:'relative'}}>
+       <Text style={{fontSize:30, color:'white',fontWeight:'bold', textAlign:'center'}}>Discover Endless Possibilities with{ ' '}
+        <Text style={{color:'#ffd700'}}>Aora </Text>
+       </Text>
+       <Image
+        source={images.path}
+        style={{width:90,height:15, position:'absolute', bottom:-10,right:-8}}
+       />
+    
+      </View>
+      <Text style={{fontSize:15, fontFamily:'Poppins-Regular',color:"gray", marginTop:50 , textAlign:'center'}}>Where creativity meets innovations:embark on a journey of limitless exporation with Aora</Text>
+      <CustomButton />
+     </View>
+  </ScrollView>
+   </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff', // white background
+  safearea:{
+    
+   backgroundColor: '#191970'
   },
-  title: {
-    fontSize: 24,
-    marginTop: 50,
-    fontFamily: 'Poppins_900Black',
-    fontWeight: 'bold',
-  },
+  view:{
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center',
+    height:'100%',
+    padding:4
+  }
 });
