@@ -13,11 +13,17 @@ const TabIcon = ({icon,color,name,focused}) =>{
                  width:24,
                  height:24,
                  tintColor:color,
-                 marginLeft:5
+                 marginLeft:8
                  
              }}
             />
-            <Text style={[styles.textXs, focused ? styles.fontPsemibold : styles.fontPregular]}>
+             <Text
+                style={[
+                    styles.textXs,
+                    focused ? styles.fontPsemibold : styles.fontPregular,
+                    { color: color }
+                ]}
+            >
                 {name}
             </Text>
         </View>
@@ -30,6 +36,14 @@ const TabsLayout = () => {
      <Tabs
      screenOptions={{
         tabBarShowLabel:false,
+        tabBarActiveTintColor:'#FFA001',
+        tabBarInactiveTintColor:'#CDCDE0',
+        tabBarBadgeStyle:{
+            backgroundColor:'#161622',
+            borderTopWidth:1,
+            borderTopColor:'#232533',
+            height:84
+        }
      }}>
         <Tabs.Screen name="home" options={{
             title: 'Home',	
@@ -50,7 +64,8 @@ const TabsLayout = () => {
            icon ={icons.bookmark}
            color ={color}
            name="Bookmark"
-           focused={focused}/>
+           focused={focused}
+           />
             )
         }}/>
          <Tabs.Screen name="create" options={{
@@ -96,6 +111,7 @@ const styles = StyleSheet.create({
     },
     textXs: {
         fontSize: 12, // assuming text-xs corresponds to a font size of 12
-      }
+       
+    }
   });
 export default TabsLayout
