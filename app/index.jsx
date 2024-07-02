@@ -1,9 +1,10 @@
 import React from 'react';
-import { StatusBar, Text,Image, View, StyleSheet,ScrollView } from 'react-native';
-import { Link } from 'expo-router';
+import {  Text,Image, View, StyleSheet,ScrollView } from 'react-native';
+import { Redirect,router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {images} from '../constants';
 import CustomButton from './CustomButton';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   return (
@@ -33,11 +34,13 @@ export default function App() {
       <Text style={{fontSize:15, fontFamily:'Poppins-Regular',color:"gray", marginTop:50 , textAlign:'center'}}>Where creativity meets innovations:embark on a journey of limitless exporation with Aora</Text>
      <CustomButton
      title="Continue with Email"
-     handlePress={()=>{}}
+     handlePress={()=>router.push('/Sign-in')}
      containerStyles="w-full mt-7"
      />
      </View>
   </ScrollView>
+  <StatusBar backgroundColor='#161622'
+  style='light'/>
    </SafeAreaView>
   );
 }
@@ -45,7 +48,7 @@ export default function App() {
 const styles = StyleSheet.create({
   safearea:{
     
-   backgroundColor: '#191970'
+   backgroundColor: '#000000'
   },
   view:{
     width:'100%',
