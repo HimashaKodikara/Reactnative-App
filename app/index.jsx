@@ -34,7 +34,7 @@ export default function App() {
       <Text style={{fontSize:15, fontFamily:'Poppins-Regular',color:"gray", marginTop:50 , textAlign:'center'}}>Where creativity meets innovations:embark on a journey of limitless exporation with Aora</Text>
      <CustomButton
      title="Continue with Email"
-     handlePress={()=>router.push('/Sign-in')}
+     handlePress={()=>router.push('/sign-in')}
      containerStyles="w-full mt-7"
      />
      </View>
