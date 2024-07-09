@@ -16,11 +16,13 @@ const FormFiled = ({ title, value, placeholder, handleChangeText, otherStyles, .
           onChangeText={handleChangeText}
           secureTextEntry ={title === 'Password' && !showpassword }
         />
-        {title === 'Password' && (
+        {title === "Password" && (
           <TouchableOpacity onPress={() => setShowPassword(!showpassword)}>
-            <Image source={!showpassword ? icons.eye : icons.eyeHide} style={{width:6, height:6,resizeMode:'contain'}}/>
+            <Image source={!showpassword ? icons.eye : icons.eyeHide}style={{width:25,height:25,marginTop:7}}
+         resizeMode='contain'/>
             </TouchableOpacity>
         )}
+        
       </View>
     </View>
   );
@@ -36,13 +38,15 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     borderWidth: 2,
-    borderColor: '#BDBDBD', // Assuming this is the color you want for the border
-    width: 300,
-    height: 50, // 16 * 4 to convert h-16
-    paddingHorizontal: 16, // px-4
-    backgroundColor: '#F5F5F5', // Assuming black-100 is a light shade
-    borderRadius: 20, // rounded-2xl
+    borderColor: 'yellow', 
+    width: 330,
+    height: 50, 
+    paddingHorizontal: 16, 
+    backgroundColor: 'black', 
+    borderRadius: 20, 
     justifyContent: 'center',
+    alignContent:'center',
+    flexDirection:'row',
   },
   input:{
     flex: 1,
