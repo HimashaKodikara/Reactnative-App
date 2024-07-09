@@ -4,12 +4,16 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { images } from '../../constants';
 import FormFiled from '../../FormFiled';
+import CustomButton from '../../FormFiled';
 const SignIn = () => {
 
   const [form,setForm] = useState({
     email:'',
     password:''
   })
+
+  const submit = () => {
+  }
   return (
     <SafeAreaView style={{ backgroundColor: '#000000', height: '100%' }}>
       <ScrollView>
@@ -30,6 +34,10 @@ const SignIn = () => {
        handleChangeText={(e) => setForm({...form,
         password:e})}
         otherStyles = "margin-top:5"
+        />
+        <CustomButton
+         title="Sign In"
+         handlePress
         />
         </View>
       </ScrollView>
