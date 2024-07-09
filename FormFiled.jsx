@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     spaceBetween: 16,
   },
   title: {
-    marginTop:50,
+    marginTop:30,
     color: "white",
   },
   inputContainer: {
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent:'center',
     flexDirection:'row',
+    marginTop:5
   },
   input:{
     flex: 1,
