@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     spaceBetween: 16,
   },
   title: {
-    marginTop:20,
+    marginTop:50,
     color: "white",
   },
   inputContainer: {
