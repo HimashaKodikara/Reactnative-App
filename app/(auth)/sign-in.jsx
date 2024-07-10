@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import FormFiled from '../../FormFiled';
 import CustomButton from '../CustomButton';
+import {Link} from 'expo-router';
 const SignIn = () => {
 
   const [form,setForm] = useState({
@@ -17,7 +18,7 @@ const SignIn = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#000000', height: '100%' }}>
       <ScrollView>
-        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', height: 500, paddingHorizontal: 4, marginVertical: 6, marginTop:70 }}>
+        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', height: 500, paddingHorizontal: 4, marginVertical: 6, marginTop:70,minHeight:20 }}>
           <Image source={images.logo} style={{ width: 115, height: 35 }} resizeMode='contain' />
           <Text style={{fontSize:20, color:'white', fontWeight:'bold', marginTop:25,fontFamily:'Poppins-SemiBold'}}>Log in to Aora</Text>
        
@@ -38,14 +39,15 @@ const SignIn = () => {
         <CustomButton
          title="Sign In"
          handlePress = {submit}
-         style={{width:'100%'}}
+         style={{width:'100%',marginTop:10}}
          isLoading={isSubmitting}
         />
 
         <View style={{justifyContent:'center' , paddingTop:5,flexDirection:'row',
           gap:2
         }}>
-          <Text style={{fontSize:20, color:'white'}}>Don't have acount?</Text>
+          <Text style={{fontSize:20, color:'white',marginTop:10}}>Don't have acount?</Text>
+          <Link href="/sign-up" style={{fontSize:20, color:"yellow",marginTop:10}}> Sign Up</Link>
         </View>
         </View>
       </ScrollView>

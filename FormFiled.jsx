@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     borderWidth: 2,
-    borderColor: 'yellow', 
+    borderColor: '#f59e0b', 
     width: 330,
     height: 50, 
     paddingHorizontal: 16, 
