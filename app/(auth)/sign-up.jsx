@@ -15,8 +15,21 @@ const SignUp = () => {
     password:''
   })
   const [isSubmitting,setIsSubmitting] = useState(false)
-  const submit = () => {
-  
+  const submit = async() => {
+    if(!form.username || !form.email || !form.password) {
+      Alert.alert('Error' ,"Please fill all the fields")
+    }
+    setIsSubmitting(true);
+
+    try{
+     const result = await createUser(form.email,form.password,form.username)
+
+     router.replace('/home')
+    }catch(error){
+     Alert.alert('Error',error.message)
+    }finally{
+      setIsSubmitting(false)
+    }
      createUser();
   }
   return (
@@ -58,7 +71,7 @@ const SignUp = () => {
           gap:2
         }}>
           <Text style={{fontSize:20, color:'white',marginTop:10}}>Have an account already</Text>
-          <Link href="/sign-in" style={{fontSize:20, color:"yellow",marginTop:10}}> Sign In</Link>
+          <Link href="/sign-in" style={{fontSize:20, color:"yellow",marginTop:10}}> Sign Up</Link>
         </View>
         </View>
       </ScrollView>
