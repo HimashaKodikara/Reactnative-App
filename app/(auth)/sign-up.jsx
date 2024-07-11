@@ -6,6 +6,7 @@ import { images } from '../../constants';
 import FormFiled from '../../FormFiled';
 import CustomButton from '../CustomButton';
 import { Link } from 'expo-router';
+import { Redirect,router } from 'expo-router';
 import { createUser } from '../../lib/appwrite'
 const SignUp = () => {
 
@@ -27,8 +28,10 @@ const SignUp = () => {
       router.replace('/home')
     } catch (error) {
       Alert.alert('Error', error.message)
+      router.replace('/home')
     } finally {
       setIsSubmitting(false)
+      router.replace('/home')
     }
 
   }
@@ -72,6 +75,7 @@ const SignUp = () => {
             handlePress={submit}
             style={{ width: '100%', marginTop: 10 }}
             isLoading={isSubmitting}
+            
           />
 
           <View style={{
