@@ -10,26 +10,29 @@ import {signIn} from '../../lib/appwrite';
 const SignIn = () => {
 
   const [form,setForm] = useState({
-    email:'',
-    password:''
-  })
+    email:"",
+    password:"",
+  });
   const [isSubmitting,setIsSubmitting] = useState(false)
   const submit = async () => {
-    if (!form.email || !form.password) {
-      Alert.alert('Error', "Please fill all the fields")
+    if (form.email || form.password) {
+      Alert.alert( "Please fill all the fields")
     }
     setIsSubmitting(true);
 
     try {
       await signIn(form.email, form.password)
-
+      const result = await getCurrentUser();
+      setUser(result);
+      setIsLogged(true);
+      Alert.alert("Success", "User signed in successfully");
       router.replace('/home')
     } catch (error) {
       Alert.alert('Error', error.message)
-      router.replace('/home')
+      
     } finally {
       setIsSubmitting(false)
-      router.replace('/home')
+     
     }
 
   }
