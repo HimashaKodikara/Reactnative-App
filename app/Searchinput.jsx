@@ -10,17 +10,15 @@ const SearchInput = ({ title, value, placeholder, handleChangeText, otherStyles,
         <TextInput
           style={styles.input}
           value={value}
-          placeholder = {placeholder}
-          placeholderTextColor="#7b7b8b"
+          placeholder = "Search for a video topic"
+          placeholderTextColor="white"
           onChangeText={handleChangeText}
           secureTextEntry ={title === 'Password' && !showpassword }
         />
-        {title === "Password" && (
-          <TouchableOpacity onPress={() => setShowPassword(!showpassword)}>
-            <Image source={!showpassword ? icons.eye : icons.eyeHide}style={{width:25,height:25,marginTop:7}}
-         resizeMode='contain'/>
-            </TouchableOpacity>
-        )}
+       <TouchableOpacity>
+           
+           <Image source={icons.search}style={{width:25,height:25,marginTop:7}}/>
+       </TouchableOpacity>
         
       </View>
     
@@ -37,11 +35,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     borderWidth: 2,
-    borderColor: '#f59e0b', 
-    width: 330,
+    color:'white', 
+    width: '100%',
     height: 50, 
     paddingHorizontal: 16, 
-    backgroundColor: 'black', 
+    backgroundColor: 'gray', 
     borderRadius: 20, 
     justifyContent: 'center',
     alignContent:'center',
