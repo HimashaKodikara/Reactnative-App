@@ -4,7 +4,7 @@ import React from 'react'
 const Create = () => {
   return (
     <View>
-      <Text>creatC</Text>
+      <Text style={{fontSize:10}}>creatC</Text>
     </View>
   )
 }

@@ -1,15 +1,17 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { images } from '../../constants';
+import SearchInput from '../Searchinput';
 
 const Home = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: 'black', flex: 0 }}>
       <FlatList
         data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Text style={{ fontSize: 20 }}>{item.id} </Text>
+          <Text style={{ fontSize: 20, color: 'white' }}>{item.id}</Text>
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
@@ -18,7 +20,11 @@ const Home = () => {
                 <Text style={styles.welcomeText}>Welcome Back</Text>
                 <Text style={styles.usernameText}>JdMastery</Text>
               </View>
+              <View style={{ marginTop: 15 }}>
+                <Image source={images.logoSmall} style={{ width: 50, height: 50 }} resizeMode="contain" />
+              </View>
             </View>
+            <SearchInput/>
           </View>
         )}
       />
@@ -30,8 +36,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     marginVertical: 6,
     paddingHorizontal: 4,
-    height: 24,
-    
+    marginTop: 30,
   },
   headerContent: {
     flexDirection: 'row',
@@ -40,11 +45,12 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   welcomeText: {
-    fontSize: 50,
-    color: 'gray',
+    fontSize: 30,
+    color: 'white',
   },
   usernameText: {
     fontSize: 20,
+    color: 'white',
   },
 });
 
