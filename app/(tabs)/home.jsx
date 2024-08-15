@@ -27,9 +27,9 @@ const Home = () => {
             <SearchInput/>
             <View style={{width:'100%', flex:1,paddingTop:5,paddingBottom:8}}>
               <Text style={{color:'white',fontSize:20 , marginBottom:3,marginTop:10}}>Latest Videos</Text>
-  <Trending/>
+  <Trending posts={[{id:1},{id:2},{id:3}] ??[]}/>
             </View>
-            
+
           </View>
         )}
       />
