@@ -4,11 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../Searchinput';
 import Trending from '../Trending';
+import EmptyState from '../../EmptyState';
 const Home = () => {
   return (
     <SafeAreaView style={{ backgroundColor: 'black', flex: 0 }}>
       <FlatList
-        data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+        //data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+        data = {[]}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Text style={{ fontSize: 20, color: 'white' }}>{item.id}</Text>
@@ -31,6 +33,11 @@ const Home = () => {
             </View>
 
           </View>
+        )}
+        ListEmptyComponent={() => (
+         <EmptyState
+         title="No Videos Found"
+         subtitle="Be the first one to upload a video"/>
         )}
       />
     </SafeAreaView>
