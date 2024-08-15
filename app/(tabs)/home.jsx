@@ -29,6 +29,7 @@ const Home = () => {
               <Text style={{color:'white',fontSize:20 , marginBottom:3,marginTop:10}}>Latest Videos</Text>
   <Trending/>
             </View>
+            
           </View>
         )}
       />
