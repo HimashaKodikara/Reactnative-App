@@ -1,5 +1,5 @@
-import { View, Text, FlatList, StyleSheet, Image, RefreshControl,useState } from 'react-native';
-import React from 'react';
+import { View, Text, FlatList, StyleSheet, Image, RefreshControl } from 'react-native';
+import React,{useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../Searchinput';
