@@ -18,7 +18,7 @@ const Home = () => {
   const instance = new MyClass();
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'black', flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: 'black', flex: 1, border:2,borderColor:'red' }}>
       <FlatList
        // data={[{ id: 1 }, { id: 2 }, { id: 3 }]} // Example data
        data={[]}
