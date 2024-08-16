@@ -1,9 +1,10 @@
 import { View, Text, FlatList, StyleSheet, Image, RefreshControl } from 'react-native';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../Searchinput';
 import EmptyState from '../../EmptyState';
+import { getAllPosts } from '../../lib/appwrite';
 
 // Correct usage of a class
 const MyClass = class {
@@ -13,7 +14,28 @@ const MyClass = class {
 };
 
 const Home = () => {
+  const [data,setData] = useState([]); // Use `useState` to manage state
   // Correctly instantiate the class using `new`
+  const [isLoading,setIsLoading] = useState(true);
+
+  useEffect(() => {
+ const fetchData = async()=>{
+  setIsLoading(true);
+
+  try{
+  const response = await getAllPosts();
+
+  setData(response);
+  }catch(error){
+ Alert.alert('Error',error.message);
+  }finally{
+    setIsLoading(false);
+  }
+ }
+ fetchData();
+  },[]);
+
+  console.log(data);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async() =>{
