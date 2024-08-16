@@ -5,15 +5,26 @@ import { images } from '../../constants';
 import SearchInput from '../Searchinput';
 import Trending from '../Trending';
 import EmptyState from '../../EmptyState';
+
+// Correct usage of a class
+const MyClass = class {
+  constructor() {
+    this.name = 'MyClass';
+  }
+};
+
 const Home = () => {
+  // Correctly instantiate the class using `new`
+  const instance = new MyClass();
+
   return (
-    <SafeAreaView style={{ backgroundColor: 'black', flex: 0 }}>
+    <SafeAreaView style={{ backgroundColor: 'black', flex: 1 }}>
       <FlatList
-        //data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
-        data = {[]}
-        keyExtractor={(item) => item.id.toString()}
+       // data={[{ id: 1 }, { id: 2 }, { id: 3 }]} // Example data
+       data={[]}
+        keyExtractor={(item) => item.id.toString()} // Provide a keyExtractor
         renderItem={({ item }) => (
-          <Text style={{ fontSize: 20, color: 'white' }}>{item.id}</Text>
+          <Text style={{ fontSize: 20, color: 'white' }} key={item.id}>{item.id}</Text> // Each child should have a unique key
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
@@ -29,15 +40,14 @@ const Home = () => {
             <SearchInput/>
             <View style={{width:'100%', flex:1,paddingTop:5,paddingBottom:8}}>
               <Text style={{color:'white',fontSize:20 , marginBottom:3,marginTop:10}}>Latest Videos</Text>
-  <Trending posts={[{id:1},{id:2},{id:3}] ??[]}/>
+              <Trending posts={[{id:1},{id:2},{id:3}] ??[]}/>
             </View>
-
           </View>
         )}
         ListEmptyComponent={() => (
          <EmptyState
-         title="No Videos Found"
-         subtitle="Be the first one to upload a video"/>
+           title="No Videos Found"
+           subtitle="Be the first one to upload a video"/>
         )}
       />
     </SafeAreaView>
