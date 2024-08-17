@@ -25,7 +25,7 @@ const Home = () => {
     setRefreshing(false);
   }
   const instance = new MyClass();
-console.log(posts);
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <FlatList
@@ -33,7 +33,7 @@ console.log(posts);
       //  data={[]}
         keyExtractor={(item) => item.id} // Provide a keyExtractor
         renderItem={({ item }) => (
-         <VideoCard/>
+         <VideoCard video={item}/>
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
