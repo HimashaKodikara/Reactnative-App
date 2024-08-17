@@ -6,6 +6,7 @@ import SearchInput from '../Searchinput';
 import EmptyState from '../../EmptyState';
 import { getAllPosts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
+import VideoCard from '../VideoCard';
 // Correct usage of a class
 const MyClass = class {
   constructor() {
@@ -32,7 +33,7 @@ console.log(posts);
       //  data={[]}
         keyExtractor={(item) => item.id} // Provide a keyExtractor
         renderItem={({ item }) => (
-          <Text style={{ fontSize: 20, color: 'white' }} key={item.title}>{item.title}</Text> // Each child should have a unique key
+         <VideoCard/>
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
