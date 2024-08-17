@@ -14,24 +14,25 @@ const MyClass = class {
 };
 
 const Home = () => {
- const {data:posts} = useAppwrite(getAllPosts);
+ const {data:posts , refetch} = useAppwrite(getAllPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async() =>{
     setRefreshing(true);
+    await refetch();
     //re call videos. if any new videos appeard
     setRefreshing(false);
   }
   const instance = new MyClass();
-
+console.log(posts);
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <FlatList
-       data={[{ id: 1 }, { id: 2 }, { id: 3 }]} // Example data
+       data={posts} // Example data
       //  data={[]}
-        keyExtractor={(item) => item.id.toString()} // Provide a keyExtractor
+        keyExtractor={(item) => item.id} // Provide a keyExtractor
         renderItem={({ item }) => (
-          <Text style={{ fontSize: 20, color: 'white' }} key={item.id}>{item.id}</Text> // Each child should have a unique key
+          <Text style={{ fontSize: 20, color: 'white' }} key={item.title}>{item.title}</Text> // Each child should have a unique key
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
