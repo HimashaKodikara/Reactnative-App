@@ -4,9 +4,9 @@ import React from 'react';
 const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } }) => {
   return (
     <View style={styles.cardContainer}>
-      <Image source={{ uri: thumbnail }} style={styles.thumbnail} />
+     
       <View style={styles.infoContainer}>
-        <Image source={{ uri: avatar }} style={styles.avatar} />
+        
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.username}>{username}</Text>
