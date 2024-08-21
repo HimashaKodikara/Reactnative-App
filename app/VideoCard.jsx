@@ -9,7 +9,17 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
 
       <View style={styles.inner}>
            <View style={styles.imagecontainer}>
-             
+             <Image style={styles.img} source={{uri:avatar}}/>
+           </View>
+           <View style={styles.sub}>
+           <Text style={styles.tit}
+           numberOfLines={1}>{title}</Text>
+            <Text
+              style={styles.user}
+              numberOfLines={1}
+            >
+              {username}
+            </Text>
            </View>
       </View>
      </View>
@@ -51,6 +61,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 2,
+   },
+   img:{
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
+   },
+   sub:{
+    flex: 1,
+    justifyContent: 'center',
+    marginLeft: 12,
+    gap: 4,
+   },
+   tit:{
+    fontWeight: '600',  // psemibold is a semi-bold weight, which is typically 600
+    fontSize: 14,       // text-sm corresponds to 14px font size
+    color: 'white',
+   },
+   user:{
+    fontSize: 12,
+    color: '#f5f5f5', // This is a common color for gray-100. You may need to adjust based on your specific design.
+    fontWeight: '400',
    }
 
 });
