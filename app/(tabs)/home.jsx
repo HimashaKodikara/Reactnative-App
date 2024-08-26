@@ -4,9 +4,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../Searchinput';
 import EmptyState from '../../EmptyState';
-import { getAllPosts } from '../../lib/appwrite';
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
 import VideoCard from '../VideoCard';
+import Trending from '../Trending';
 
 // Correct usage of a class
 const MyClass = class {
@@ -17,8 +18,9 @@ const MyClass = class {
 
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
   const [refreshing, setRefreshing] = useState(false);
-
+   
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
@@ -49,6 +51,8 @@ const Home = () => {
       <SearchInput />
       <View style={{ width: '100%', flex: 1, paddingTop: 5, paddingBottom: 8 }}>
         <Text style={{ color: 'white', fontSize: 20, marginBottom: 3, marginTop: 10 }}>Latest Videos</Text>
+
+        <Trending posts={latestPosts ?? []}/>
       </View>
     </View>
   )}
