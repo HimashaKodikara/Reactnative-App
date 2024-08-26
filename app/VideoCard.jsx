@@ -1,7 +1,9 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import React from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import icons from '../constants/icons'
 
 const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } }) => {
+  const [play,setplay] = useState(false);
   return (
     <View style={styles.cardContainer}>
      
@@ -22,9 +24,19 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
             </Text>
            </View>
       </View>
+      <View style={{paddingTop:5}} >
+        <Image source={icons.menu} style={{width: 20,
+    height: 20}} resizeMode="contain"/>
+      </View>
      </View>
-          <Text style={styles.title}>{title}</Text>
-          
+     {play ? (
+        <Text>Playing</Text>
+      ) : (
+        <TouchableOpacity>
+        
+          <Text>Play</Text>
+        </TouchableOpacity>
+      )}  
     </View>
   );
 };
