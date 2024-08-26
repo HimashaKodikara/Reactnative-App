@@ -31,6 +31,7 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
      </View>
      {play ? (
         <Text>Playing</Text>
+        
       ) : (
         <TouchableOpacity style={styles.touch}>
          
@@ -40,6 +41,7 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
          resizeMode='cover'
          />
         </TouchableOpacity>
+       
       )}  
     </View>
   );
