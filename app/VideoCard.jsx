@@ -30,10 +30,12 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
       </View>
      </View>
      {play ? (
-        <Text>Playing</Text>
+        <Text style={{color:'white'}}>Playing</Text>
         
       ) : (
-        <TouchableOpacity style={styles.touch}>
+        <TouchableOpacity style={styles.touch} 
+        activeOpacity={0.7}
+        onPress={() => setplay(true)}>
          
          <Image
          source={{uri: thumbnail}}
@@ -42,7 +44,7 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
          />
         <Image
          source={icons.play}
-         style={{ width: 48,  // 12 * 4 = 48 (as 1 unit in Tailwind is 4 pixels)
+         style={{ width: 48,  
           height: 48,
           position: 'absolute',}}
          resizeMode="contain"
