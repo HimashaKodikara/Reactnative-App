@@ -1,5 +1,5 @@
 import { View, Text, FlatList, StyleSheet, Image, RefreshControl } from 'react-native';
-import React,{useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants';
 import SearchInput from '../Searchinput';
@@ -7,6 +7,7 @@ import EmptyState from '../../EmptyState';
 import { getAllPosts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
 import VideoCard from '../VideoCard';
+
 // Correct usage of a class
 const MyClass = class {
   constructor() {
@@ -15,50 +16,50 @@ const MyClass = class {
 };
 
 const Home = () => {
- const {data:posts , refetch} = useAppwrite(getAllPosts);
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
   const [refreshing, setRefreshing] = useState(false);
 
-  const onRefresh = async() =>{
+  const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
-    //re call videos. if any new videos appeard
     setRefreshing(false);
-  }
+  };
+
   const instance = new MyClass();
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <FlatList
-       data={posts} // Example data
-      //  data={[]}
-        keyExtractor={(item) => item.id} // Provide a keyExtractor
-        renderItem={({ item }) => (
-         <VideoCard video={item}/>
-        )}
-        ListHeaderComponent={() => (
-          <View style={styles.headerContainer}>
-            <View style={styles.headerContent}>
-              <View>
-                <Text style={styles.welcomeText}>Welcome Back</Text>
-                <Text style={styles.usernameText}>JdMastery</Text>
-              </View>
-              <View style={{ marginTop: 15 }}>
-                <Image source={images.logoSmall} style={{ width: 50, height: 50 }} resizeMode="contain" />
-              </View>
-            </View>
-            <SearchInput/>
-            <View style={{width:'100%', flex:1,paddingTop:5,paddingBottom:8}}>
-              <Text style={{color:'white',fontSize:20 , marginBottom:3,marginTop:10}}>Latest Videos</Text>
-            </View>
-          </View>
-        )}
-        ListEmptyComponent={() => (
-         <EmptyState
-           title="No Videos Found"
-           subtitle="Be the first one to upload a video"/>
-        )}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
-      />
+     <FlatList
+  data={posts} // Example data
+  keyExtractor={(item, index) => index.toString()} // Use index if no unique id is present
+  renderItem={({ item }) => (
+    <VideoCard video={item} />
+  )}
+  ListHeaderComponent={() => (
+    <View style={styles.headerContainer}>
+      <View style={styles.headerContent}>
+        <View>
+          <Text style={styles.welcomeText}>Welcome Back</Text>
+          <Text style={styles.usernameText}>JdMastery</Text>
+        </View>
+        <View style={{ marginTop: 15 }}>
+          <Image source={images.logoSmall} style={{ width: 50, height: 50 }} resizeMode="contain" />
+        </View>
+      </View>
+      <SearchInput />
+      <View style={{ width: '100%', flex: 1, paddingTop: 5, paddingBottom: 8 }}>
+        <Text style={{ color: 'white', fontSize: 20, marginBottom: 3, marginTop: 10 }}>Latest Videos</Text>
+      </View>
+    </View>
+  )}
+  ListEmptyComponent={() => (
+    <EmptyState
+      title="No Videos Found"
+      subtitle="Be the first one to upload a video"
+    />
+  )}
+  refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+/>
     </SafeAreaView>
   );
 };
@@ -67,8 +68,8 @@ const styles = StyleSheet.create({
   safeAreaView: {
     backgroundColor: 'black',
     flex: 1,
-    borderWidth: 2, // Set border width
-    borderColor: 'red', // Set border color to red
+    borderWidth: 2,
+    borderColor: 'red',
     height: '100%',
   },
   headerContainer: {

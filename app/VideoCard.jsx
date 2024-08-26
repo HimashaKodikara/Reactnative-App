@@ -40,6 +40,7 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
          style={styles.thumbnai}
          resizeMode='cover'
          />
+       
         </TouchableOpacity>
        
       )}  
