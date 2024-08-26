@@ -32,9 +32,13 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
      {play ? (
         <Text>Playing</Text>
       ) : (
-        <TouchableOpacity>
-        
-          <Text>Play</Text>
+        <TouchableOpacity style={styles.touch}>
+         
+         <Image
+         source={{uri: thumbnail}}
+         style={styles.thumbnai}
+         resizeMode='cover'
+         />
         </TouchableOpacity>
       )}  
     </View>
@@ -86,16 +90,32 @@ const styles = StyleSheet.create({
     gap: 4,
    },
    tit:{
-    fontWeight: '600',  // psemibold is a semi-bold weight, which is typically 600
-    fontSize: 14,       // text-sm corresponds to 14px font size
+    fontWeight: '600', 
+    fontSize: 14,      
     color: 'white',
    },
    user:{
     fontSize: 12,
-    color: '#f5f5f5', // This is a common color for gray-100. You may need to adjust based on your specific design.
+    color: '#f5f5f5', 
     fontWeight: '400',
+   },
+   thumbnai:{
+    width: '100%',          
+    height: 240,            
+    borderRadius: 16,       
+    marginTop: 12,   
    }
-
+,
+touch:{
+  width: '100%',          // w-full -> 100% width
+    height: 240,            // h-60 -> 60 * 4 (assuming Tailwind's default spacing scale) = 240px
+    borderRadius: 16,       // rounded-xl -> 16px border radius
+    marginTop: 12,          // mt-3 -> 3 * 4 (assuming Tailwind's default spacing scale) = 12px
+    position: 'relative',   // relative positioning
+    justifyContent: 'center',  // justify-center -> center alignment along the main axis
+    alignItems: 'center',   // items-center -> center alignment along the cross axis
+    display: 'flex',        
+}
 });
 
 export default VideoCard;
