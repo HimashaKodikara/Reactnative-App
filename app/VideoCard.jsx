@@ -40,7 +40,13 @@ const VideoCard = ({ video: { title, thumbnail, creator: { username, avatar } } 
          style={styles.thumbnai}
          resizeMode='cover'
          />
-       
+        <Image
+         source={icons.play}
+         style={{ width: 48,  // 12 * 4 = 48 (as 1 unit in Tailwind is 4 pixels)
+          height: 48,
+          position: 'absolute',}}
+         resizeMode="contain"
+         />
         </TouchableOpacity>
        
       )}  
@@ -110,13 +116,13 @@ const styles = StyleSheet.create({
    }
 ,
 touch:{
-  width: '100%',          // w-full -> 100% width
-    height: 240,            // h-60 -> 60 * 4 (assuming Tailwind's default spacing scale) = 240px
-    borderRadius: 16,       // rounded-xl -> 16px border radius
-    marginTop: 12,          // mt-3 -> 3 * 4 (assuming Tailwind's default spacing scale) = 12px
-    position: 'relative',   // relative positioning
-    justifyContent: 'center',  // justify-center -> center alignment along the main axis
-    alignItems: 'center',   // items-center -> center alignment along the cross axis
+  width: '100%',         
+    height: 240,          
+    borderRadius: 16,       
+    marginTop: 12,        
+    position: 'relative',  
+    justifyContent: 'center',  
+    alignItems: 'center', 
     display: 'flex',        
 }
 });
