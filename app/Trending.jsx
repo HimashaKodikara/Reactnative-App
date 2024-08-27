@@ -2,6 +2,7 @@ import { View, Text, FlatList,Image, StyleSheet, TouchableOpacity, ImageBackgrou
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { icons } from "../constants";
+import {Video,ResizeMode} from 'expo-av'
 const zoomIn = {
   0:{
     scale:0.9
@@ -31,7 +32,14 @@ const TrendingItem = ({activeItem,item}) =>{
     >
    {
     play ? (
-      <Text style={{color:'white'}}>Playing</Text>
+      <Video
+      source={{uri:item.Video}}
+      style={{width: 208, 
+        height: 288, 
+        borderRadius: 33, 
+        marginTop: 12, 
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',}}
+      />
     ):(
    <TouchableOpacity
    style={{ flex: 1,
