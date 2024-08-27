@@ -1,7 +1,7 @@
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
+import { View, Text, FlatList,Image, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
-
+import { icons } from "../constants";
 const zoomIn = {
   0:{
     scale:0.9
@@ -22,10 +22,11 @@ const zoomOut = {
 const TrendingItem = ({activeItem,item}) =>{
 
   const [play,setPlay] = useState(false);
+  console.log(activeItem, item.$id)
   return(
     <Animatable.View
      style={{marginRight:5}}
-     animation={activeItem === item.$id ? zoomIn : zoomOut}
+     animation={activeItem.$id === item.$id ? zoomIn : zoomOut}
      duration ={500}
     >
    {
@@ -45,6 +46,13 @@ const TrendingItem = ({activeItem,item}) =>{
             style={styles.ImageBack}
             resizeMode="cover"
           />
+          <Image
+            source={icons.play}
+            style={{ width: 48, 
+              height: 48, 
+              position: 'absolute',}}
+            resizeMode="contain"
+          />
    </TouchableOpacity>
     )
    }
@@ -53,7 +61,7 @@ const TrendingItem = ({activeItem,item}) =>{
 }
 const Trending = ({posts}) => {
 
-  const [activeItem,setActiveItem] = useState(posts[0]);
+  const [activeItem,setActiveItem] = useState(posts[1]);
   return (
     <FlatList data={posts}
     keyExtractor={(item) => item.$id}
