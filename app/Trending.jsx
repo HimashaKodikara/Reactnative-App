@@ -33,12 +33,17 @@ const TrendingItem = ({activeItem,item}) =>{
    {
     play ? (
       <Video
-      source={{uri:item.Video}}
-      style={{width: 208, 
-        height: 288, 
-        borderRadius: 33, 
-        marginTop: 12, 
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',}}
+      source={{uri:item.video}}
+      style={styles.videoContainer}
+        resizeMode={ResizeMode.CONTAIN}
+        useNativeControls
+        shouldPlay
+        onPlaybackStatusUpdate={(status) =>{
+          if(status.didJustFinish){
+            setPlay(false);
+          }
+            
+        }}
       />
     ):(
    <TouchableOpacity
@@ -108,5 +113,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10, 
     elevation: 10, 
   },
+  videoContainer:{
+    width: 208, 
+    height: 288, 
+    borderRadius: 33, 
+    marginTop: 12, 
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  }
 });
 export default Trending
