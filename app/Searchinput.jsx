@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity,Image } from 'react
 import React, { useState } from 'react';
 
 import {icons} from '../constants'
+import { usePathname } from 'expo-router';
 const SearchInput = ({ title, value, placeholder, handleChangeText, otherStyles, ...props }) => {
-  const [showpassword, setShowPassword] = useState(false)
+  const pathname = usePathname()
+  const [query,setQuery] = useState('');
   return (
     
       <View style={styles.inputContainer}>
