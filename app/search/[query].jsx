@@ -25,9 +25,9 @@ const Search = () => {
     useAppwrite(SearchPosts(query));
 
 
-useEffect(()=>  {
- refetch();
-},[query])
+  useEffect(() => {
+    refetch();
+  }, [query])
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -39,17 +39,23 @@ useEffect(()=>  {
         )}
         ListHeaderComponent={() => (
           <View style={styles.headerContainer}>
-            <View style={styles.headerContent}>
-              <View>
-                <Text style={styles.welcomeText}>Search Results</Text>
-                <Text style={styles.usernameText}>{query}</Text>
-                <SearchInput intialQuery={query}  />
-              </View>
-       
+
+
+            <Text style={styles.welcomeText}>Search Results</Text>
+            <Text style={styles.usernameText}>{query}</Text>
+            <View>
+
+
             </View>
-           
-          
+           <View>
+            <SearchInput intialQuery={query} />
+            </View>
           </View>
+
+
+
+
+
         )}
         ListEmptyComponent={() => (
           <EmptyState
@@ -57,7 +63,7 @@ useEffect(()=>  {
             subtitle="Be the first one to upload a video"
           />
         )}
-         />
+      />
     </SafeAreaView>
   );
 };
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   headerContainer: {
-    
+
     paddingHorizontal: 4,
     marginTop: 30,
   },
