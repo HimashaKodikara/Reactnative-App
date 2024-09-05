@@ -47,7 +47,7 @@ const Search = () => {
 
 
             </View>
-           <View>
+           <View style={{marginTop:"6", marginBottom:"8"}}>
             <SearchInput intialQuery={query} />
             </View>
           </View>
@@ -60,7 +60,7 @@ const Search = () => {
         ListEmptyComponent={() => (
           <EmptyState
             title="No Videos Found"
-            subtitle="Be the first one to upload a video"
+            subtitle="No video found for this search"
           />
         )}
       />

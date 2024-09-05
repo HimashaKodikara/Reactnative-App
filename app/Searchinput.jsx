@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity,Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity,Image,Alert } from 'react-native';
 import React, { useState } from 'react';
 
 import {icons} from '../constants'
