@@ -9,7 +9,7 @@ import useAppwrite from '../../lib/useAppwrite';
 import VideoCard from '../VideoCard';
 import Trending from '../Trending';
 import { useLocalSearchParams } from 'expo-router';
-import { Alert } from 'react-native';
+//import { Alert } from 'react-native';
 
 
 // Correct usage of a class
@@ -41,14 +41,13 @@ useEffect(()=>  {
           <View style={styles.headerContainer}>
             <View style={styles.headerContent}>
               <View>
-                <Text style={styles.welcomeText}>Welcome Back</Text>
-                <Text style={styles.usernameText}>JdMastery</Text>
+                <Text style={styles.welcomeText}>Search Results</Text>
+                <Text style={styles.usernameText}>{query}</Text>
+                <SearchInput intialQuery={query}  />
               </View>
-              <View style={{ marginTop: 15 }}>
-                <Image source={images.logoSmall} style={{ width: 50, height: 50 }} resizeMode="contain" />
-              </View>
+       
             </View>
-            <SearchInput />
+           
           
           </View>
         )}
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   headerContainer: {
-    marginVertical: 6,
+    
     paddingHorizontal: 4,
     marginTop: 30,
   },

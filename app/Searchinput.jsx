@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 
 import {icons} from '../constants'
 import { router,usePathname } from 'expo-router';
-const SearchInput = () => {
+const SearchInput = ({intialQuery}) => {
   const pathname = usePathname()
-  const [query,setQuery] = useState("");
+  const [query,setQuery] = useState(intialQuery || '');
   return (
     
       <View style={styles.inputContainer}>
