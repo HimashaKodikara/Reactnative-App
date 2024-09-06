@@ -18,7 +18,7 @@ const SearchInput = () => {
       router.setParams({ query });
     } else {
       // Navigate to the search page with the query
-      router.push(`/search/${query}`);
+      router.push(`/search/home`);
     }
   };
 
