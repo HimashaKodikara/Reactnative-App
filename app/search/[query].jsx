@@ -1,5 +1,5 @@
-import {View,text} from 'react-native';
-import react from 'react';
+import {View,Text} from 'react-native';
+import React from 'react';
 
 import { useLocalSearchParams  } from 'expo-router';
 
@@ -9,7 +9,9 @@ const Search =() => {
 
   return(
     <View>
-      <text style={{color:'white', fontSize:'32px'}}>{query}</text>
+      <Text style={{color:'white', fontSize:'32px'}}>{query}</Text>
     </View>
   )
 }
+
+export default Search;
