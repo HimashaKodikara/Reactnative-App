@@ -1,24 +1,34 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Profile = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>P</Text>
-    </View>
+    <SafeAreaView style={styles.container}>  {/* Apply styles.container */}
+      <ScrollView>
+        <View style={styles.innerContainer}>  {/* Apply styles.innerContainer */}
+          <Text style={styles.text}>Profile Page</Text>  {/* Apply styles.text */}
+          {/* Add more content here */}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black',
+  },
+  innerContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    fontSize: 24,
+    fontSize: 55,
     fontWeight: 'bold',
-    // Add other styles as needed
+    color: 'white',  // Add text color so it is visible on black background
   },
 });
 
