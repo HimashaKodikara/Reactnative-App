@@ -85,13 +85,14 @@ const Create = () => {
                 width: '100%',       // Equivalent to w-full
                 height: 64,          // Equivalent to h-16 (16 * 4 = 64 pixels)
                 paddingHorizontal: 16, // Equivalent to px-4
-                backgroundColor: '#f3f4f6', // Replace '#f3f4f6' with your desired color, since bg-black-100 doesn't exist in React Native.
+                backgroundColor: '#1F2937', // Replace '#f3f4f6' with your desired color, since bg-black-100 doesn't exist in React Native.
                 borderRadius: 16,    // Equivalent to rounded-2xl
                 borderWidth: 2,      // Equivalent to border-2
                 borderColor: '#d1d5db', // Equivalent to border-black-200 (can adjust for your palette)
                 flexDirection: 'row',// Equivalent to flex-row
                 justifyContent: 'center', // Equivalent to justify-center
-                alignItems: 'center'
+                alignItems: 'center',
+                
               }}>
                 
                   <Image source={icons.upload}
@@ -100,6 +101,8 @@ const Create = () => {
                       width: '50%',
                       height: '50%',
                     }} />
+
+                    <Text style={{color:'white',marginLeft:-60}}>Choose a file</Text>
                 
               </View>
             )}
