@@ -5,6 +5,7 @@ import FormFiled from '../../FormFiled';
 import { Video, ResizeMode } from 'expo-av';
 import { icons } from '../../constants';
 import CustomeButton from '../CustomButton';
+import * as DocumentPicker from 'expo-document-picker';
 
 const Create = () => {
   const [uploading, setUploading] = useState(false);
@@ -16,7 +17,26 @@ const Create = () => {
   });
 
   const openPicker =async(selectType) =>{
+    const result = await DocumentPicker.getDocumentAsync 
+    ({
+      type: selectType === 'image'
+      ? ['image/png','image/jpg']
+      : ['vidoe/mp4','video/gif']
+    })
 
+    if(!result.canceled){
+      if(selectType === 'image'){
+        setForm({...form, thumbnail:result.assets[0]})
+      }
+      if(selectType === 'video'){
+        setForm({...form, video:result.assets[0]})
+      }
+    }else {
+      setTimeout(() => {
+        Alert.alert("Document picked", JSON.stringify(result, null, 2));
+      }, 100);
+      
+    }
   }
   const submit = () => {
     // Handle form submission logic
