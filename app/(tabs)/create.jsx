@@ -20,7 +20,7 @@ const Create = () => {
     try {
       const result = await DocumentPicker.getDocumentAsync({
         type: selectType === 'image'
-          ? ['image/png', 'image/jpeg'] 
+          ? ['image/png', 'image/jpeg']
           : ['video/mp4', 'video/*'], // Correct video types
       });
 
@@ -41,7 +41,27 @@ const Create = () => {
   };
 
   const submit = () => {
-    // Handle form submission logic
+    if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
+      return Alert.alert('Please fill in all the fileds')
+    }
+
+    setUploading(true)
+
+    try {
+Alert.alert('Success','Post uploaded succesfuly ')
+router
+    } catch (error) {
+ Alert.alert('Error',error.message)
+    } finally {
+      setForm({
+        title: '',
+        video: null,
+        thumbnail: null,
+        prompt: ''
+      })
+
+      setUploading(false);
+    }
   };
 
   return (
