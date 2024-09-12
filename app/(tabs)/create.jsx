@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FormFiled from '../../FormFiled';
@@ -16,28 +16,30 @@ const Create = () => {
     prompt: ''
   });
 
-  const openPicker =async(selectType) =>{
-    const result = await DocumentPicker.getDocumentAsync 
-    ({
-      type: selectType === 'image'
-      ? ['image/png','image/jpg']
-      : ['vidoe/mp4','video/gif']
-    })
+  const openPicker = async (selectType) => {
+    try {
+      const result = await DocumentPicker.getDocumentAsync({
+        type: selectType === 'image'
+          ? ['image/png', 'image/jpeg'] 
+          : ['video/mp4', 'video/*'], // Correct video types
+      });
 
-    if(!result.canceled){
-      if(selectType === 'image'){
-        setForm({...form, thumbnail:result.assets[0]})
+      if (result.type !== 'cancel') {
+        const { uri } = result; // Directly use result.uri
+        if (selectType === 'image') {
+          setForm({ ...form, thumbnail: { uri } });
+        } else if (selectType === 'video') {
+          setForm({ ...form, video: { uri } });
+        }
+      } else {
+        Alert.alert("Picker Cancelled", "No file was selected.");
       }
-      if(selectType === 'video'){
-        setForm({...form, video:result.assets[0]})
-      }
-    }else {
-      setTimeout(() => {
-        Alert.alert("Document picked", JSON.stringify(result, null, 2));
-      }, 100);
-      
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Error", "Failed to pick the document.");
     }
-  }
+  };
+
   const submit = () => {
     // Handle form submission logic
   };
@@ -52,16 +54,14 @@ const Create = () => {
           value={form.title}
           placeholder="Give your video a catchy title..."
           handleChangeText={(e) => setForm({ ...form, title: e })}
-          style={{ marginTop: 5 }} // Corrected the marginTop property
+          style={{ marginTop: 5 }}
         />
+
         <View style={{ marginTop: 7, marginBottom: 2 }}>
           <Text style={{ color: 'white', marginTop: 20 }}>Upload Video</Text>
-          <TouchableOpacity onPress={()=> openPicker
-            ('video')
-          }
-          >
+          <TouchableOpacity onPress={() => openPicker('video')}>
             {form.video ? (
-              <Video 
+              <Video
                 source={{ uri: form.video.uri }}
                 style={{ width: '100%', height: 64, borderRadius: 16 }}
                 useNativeControls
@@ -89,12 +89,14 @@ const Create = () => {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                  <Image source={icons.upload}
+                  <Image
+                    source={icons.upload}
                     resizeMode='contain'
                     style={{
                       width: '50%',
                       height: '50%',
-                    }} />
+                    }}
+                  />
                 </View>
               </View>
             )}
@@ -102,10 +104,7 @@ const Create = () => {
 
           <View style={{ marginTop: 7, marginBottom: 5 }}>
             <Text style={{ color: 'white', marginTop: 20 }}>Thumbnail Image</Text>
-            <TouchableOpacity
-            onPress={()=> openPicker
-              ('image')
-            }>
+            <TouchableOpacity onPress={() => openPicker('image')}>
               {form.thumbnail ? (
                 <Image
                   source={{ uri: form.thumbnail.uri }}
@@ -130,12 +129,14 @@ const Create = () => {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                  <Image source={icons.upload}
+                  <Image
+                    source={icons.upload}
                     resizeMode='contain'
                     style={{
                       width: '50%',
                       height: '50%',
-                    }} />
+                    }}
+                  />
                   <Text style={{ color: 'white', marginLeft: -60 }}>Choose a file</Text>
                 </View>
               )}
@@ -147,7 +148,7 @@ const Create = () => {
             value={form.prompt}
             placeholder="The prompt you used to create this video ..."
             handleChangeText={(e) => setForm({ ...form, prompt: e })}
-            style={{ marginTop: 5 }} // Corrected the marginTop property
+            style={{ marginTop: 5 }}
           />
 
           <CustomeButton
