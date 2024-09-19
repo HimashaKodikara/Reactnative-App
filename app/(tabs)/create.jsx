@@ -7,7 +7,7 @@ import { icons } from '../../constants';
 import CustomeButton from '../CustomButton';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
-import { router } from 'expo-router';
+
 const Create = () => {
   const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState({
