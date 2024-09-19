@@ -22,10 +22,11 @@ const Create = () => {
 
   const openPicker = async (selectType) => {
     try {
-      const result = await DocumentPicker.getDocumentAsync({
-        type: selectType === 'image'
-          ? ['image/png', 'image/jpeg' , 'image/jpg']
-          : ['video/mp4', 'video/*'], // Correct video types
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
       });
 
       if (result.type !== 'cancel') {
@@ -45,28 +46,33 @@ const Create = () => {
   };
 
   const submit = async () => {
-    if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
-      return Alert.alert('Please fill in all the fileds')
+    if (
+      (form.prompt === "") |
+      (form.title === "") |
+      !form.thumbnail |
+      !form.video
+    ) {
+      return Alert.alert("Please provide all fields");
     }
 
-    setUploading(true)
-
+    setUploading(true);
     try {
       await createVideo({
-        ...form, userId: user.$id
-      })
-      
-      Alert.alert('Success', 'Post uploaded succesfuly ')
-      router.push('/home')
+        ...form,
+        userId:'1',
+      });
+
+      Alert.alert("Success", "Post uploaded successfully");
+      router.push("/home");
     } catch (error) {
-      Alert.alert('Error', error.message)
+      Alert.alert("Error", error.message);
     } finally {
       setForm({
-        title: '',
+        title: "",
         video: null,
         thumbnail: null,
-        prompt: ''
-      })
+        prompt: "",
+      });
 
       setUploading(false);
     }
