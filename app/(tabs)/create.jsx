@@ -7,8 +7,11 @@ import { icons } from '../../constants';
 import CustomeButton from '../CustomButton';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
+import { createVideo } from '../../lib/appwrite';
+import {useGlobalContext} from '../../context/GlobalProvider';
 
 const Create = () => {
+  const {user} = useGlobalContext();
   const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState({
     title: '',
@@ -21,16 +24,16 @@ const Create = () => {
     try {
       const result = await DocumentPicker.getDocumentAsync({
         type: selectType === 'image'
-          ? ['image/png', 'image/jpeg']
+          ? ['image/png', 'image/jpeg' , 'image/jpg']
           : ['video/mp4', 'video/*'], // Correct video types
       });
 
       if (result.type !== 'cancel') {
         const { uri } = result; // Directly use result.uri
         if (selectType === 'image') {
-          setForm({ ...form, thumbnail: { uri } });
+          setForm({ ...form, thumbnail:result.assets[0]});
         } else if (selectType === 'video') {
-          setForm({ ...form, video: { uri } });
+          setForm({ ...form, video: result.assets[0] });
         }
       } else {
         Alert.alert("Picker Cancelled", "No file was selected.");
@@ -41,7 +44,7 @@ const Create = () => {
     }
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
       return Alert.alert('Please fill in all the fileds')
     }
@@ -49,6 +52,9 @@ const Create = () => {
     setUploading(true)
 
     try {
+      await createVideo({
+        ...form, userId: user.$id
+      })
       
       Alert.alert('Success', 'Post uploaded succesfuly ')
       router.push('/home')
@@ -86,9 +92,8 @@ const Create = () => {
               <Video
                 source={{ uri: form.video.uri }}
                 style={{ width: '100%', height: 64, borderRadius: 16 }}
-                useNativeControls
                 resizeMode={ResizeMode.COVER}
-                isLooping
+              
               />
             ) : (
               <View style={{
