@@ -5,7 +5,7 @@ import FormFiled from '../../FormFiled';
 import { Video, ResizeMode } from 'expo-av';
 import { icons } from '../../constants';
 import CustomeButton from '../CustomButton';
-import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import { createVideo } from '../../lib/appwrite';
 import {useGlobalContext} from '../../context/GlobalProvider';
@@ -23,7 +23,7 @@ const Create = () => {
   const openPicker = async (selectType) => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        mediaTypes: selectType ? 'image' ? ImagePicker.MediaTypeOptions.Images : 
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
