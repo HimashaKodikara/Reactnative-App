@@ -59,7 +59,7 @@ const Create = () => {
     try {
       await createVideo({
         ...form,
-        userId:user.$id,
+        userId:'4',
       });
 
       Alert.alert("Success", "Post uploaded successfully");
