@@ -23,8 +23,8 @@ const Create = () => {
   const openPicker = async (selectType) => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: selectType ? 'image' ? ImagePicker.MediaTypeOptions.Images : 
-        allowsEditing: true,
+        mediaTypes: selectType === 'image' ?
+         ImagePicker.MediaTypeOptions.Images :ImagePicker.MediaTypeOptions.Videos,
         aspect: [4, 3],
         quality: 1,
       });
@@ -59,7 +59,7 @@ const Create = () => {
     try {
       await createVideo({
         ...form,
-        userId:'1',
+        userId:user.$id,
       });
 
       Alert.alert("Success", "Post uploaded successfully");
